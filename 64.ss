@@ -50,6 +50,9 @@
  (gauche
   (define-module srfi-64)
   (select-module srfi-64))
+ (gerbil (import :std/srfi/9
+		 :srfi/35)
+	 (export #t))
  (else
   ))
 
@@ -128,7 +131,7 @@
 	 (define (runner? obj)
 	   (and (vector? obj)
 		(> (vector-length obj) 1)
-		(eq (vector-ref obj 0) %test-runner-cookie)))
+		(eq? (vector-ref obj 0) %test-runner-cookie)))
 	 (define (alloc)
 	   (let ((runner (make-vector 23)))
 	     (vector-set! runner 0 %test-runner-cookie)
@@ -333,7 +336,7 @@
                     (lambda (ch)
                       (if (or (char-alphabetic? ch)
                               (char-numeric? ch)
-                              (char=? ch #\Space)
+                              (char=? ch #\space)
                               (char=? ch #\-)
                               (char=? ch #\+)
                               (char=? ch #\_)

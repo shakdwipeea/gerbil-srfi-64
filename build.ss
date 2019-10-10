@@ -2,4 +2,5 @@
 
 (import :std/build-script)
 
-(defbuild-script `("64"))
+(defbuild-script `("64"
+		   "64-test"))
